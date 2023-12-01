@@ -30,12 +30,13 @@ public :
    void step( void );
 
    void addMember( const Bestiole & b );
-   void autoClonage(const Bestiole & b);
+   void autoClonage(const Bestiole & b, std::vector<Bestiole> temp);
 
    int nbVoisins( const Bestiole & b );
 
 
 };
+
 
 
 #endif

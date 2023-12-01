@@ -41,7 +41,7 @@ public :                                           // Forme canonique :
    Bestiole& operator=(const Bestiole & b);         // Operateur d'affectation
    void action( Milieu & monMilieu );
    void draw( UImg & support );
-   void autoClone (Milieu & monMilieu);
+   void autoClone (Milieu & monMilieu, std::vector<Bestiole> temp);
 
    bool jeTeVois( const Bestiole & b ) const;
 
