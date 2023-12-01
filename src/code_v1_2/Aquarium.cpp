@@ -46,6 +46,7 @@ void Aquarium::run( void )
          if ( is_keyESC() ) close();
       }
 
+      //flotte->autoClonage();
       flotte->step();
       display( *flotte );
 

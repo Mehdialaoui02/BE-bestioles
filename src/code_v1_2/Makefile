@@ -12,4 +12,3 @@ Milieu.o : Milieu.h Milieu.cpp
 
 clean:
 	rm -rf *.o main
-

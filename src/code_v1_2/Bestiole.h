@@ -38,15 +38,19 @@ public :                                           // Forme canonique :
    Bestiole( void );                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    ~Bestiole( void );                              // Destructeur
-                                                   // Operateur d'affectation binaire par defaut
+   Bestiole& operator=(const Bestiole & b);         // Operateur d'affectation
    void action( Milieu & monMilieu );
    void draw( UImg & support );
+   void autoClone (Milieu & monMilieu);
 
    bool jeTeVois( const Bestiole & b ) const;
 
    void initCoords( int xLim, int yLim );
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
+
+   int getIdentite();
+
 
 };
 
