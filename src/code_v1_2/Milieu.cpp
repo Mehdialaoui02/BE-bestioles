@@ -54,7 +54,7 @@ void Milieu::step( void )
 
    } // for
    //std::cout << "SIZE TEMP :"<<temp.size() << std::endl;
-   listeBestioles.insert(listeBestioles.end(), temp.begin(), temp.end());
+   listeBestioles.insert(listeBestioles.end(), tempClonage.begin(), tempClonage.end());
 
 
 }
