@@ -140,7 +140,7 @@ void Bestiole::draw( UImg & support )
 }
 
 void Bestiole::autoClone( Milieu & monMilieu ){
-   int rdNb = static_cast<int>( static_cast<double>( std::rand() )) % 10 + 1;
+   int rdNb = static_cast<int>( static_cast<double>( std::rand() )) % 1000 + 1;
       if (rdNb == 1) {
            cout << "Auto clonage de Bestiole n°"<< this->identite << endl;
            monMilieu.autoClonage(*this); // Appel du Copy construcor de Bestiole et ajout dans le milieu 
