@@ -38,15 +38,12 @@ void Aquarium::run( void )
    while ( ! is_closed() )
    {
 
-      // cout << "iteration de la simulation" << endl;
-
       if ( is_key() ) {
          cout << "Vous avez presse la touche " << static_cast<unsigned char>( key() );
          cout << " (" << key() << ")" << endl;
          if ( is_keyESC() ) close();
       }
-
-      //flotte->autoClonage();
+      
       flotte->step();
       display( *flotte );
 

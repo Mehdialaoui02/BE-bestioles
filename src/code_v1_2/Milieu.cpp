@@ -31,30 +31,22 @@ void Milieu::step( void )
 {
    cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
 
-   std::vector<Bestiole> tempClonage;
+   std::vector<Bestiole> tempClonage; //Liste de bestioles à cloner 
 
    for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
    {
-      //cout << "action : addr Bestiole : "<< &it << endl;
       it->action( *this );
-      //cout << "end action"<< endl;
-      //cout << "draw : addr Bestiole : "<< &it << endl;
       it->draw( *this );
-      //cout << "end draw"<< endl;
 
       int rdNb = static_cast<int>( static_cast<double>( std::rand() )) % 1000 + 1;
       if (rdNb == 1) {
            cout << "Auto clonage de Bestiole n°"<< it->getIdentite() << endl;
            tempClonage.push_back(*it); // Appel du Copy construcor de Bestiole et ajout dans le milieu
-           //temp.back().initCoords(width, height);  
            
       }
 
-      //cout << "end clone"<< endl;
-
-   } // for
-   //std::cout << "SIZE TEMP :"<<temp.size() << std::endl;
-   listeBestioles.insert(listeBestioles.end(), tempClonage.begin(), tempClonage.end());
+   } 
+   listeBestioles.insert(listeBestioles.end(), tempClonage.begin(), tempClonage.end()); //concatenation de la liste de bestioles a cloner dans la liste des bestioles dans le milieu 
 
 
 }
@@ -80,27 +72,4 @@ int Milieu::nbVoisins( const Bestiole & b )
       listeBestioles.push_back(b); 
       cout << "pushed back" << endl; 
       listeBestioles.back().initCoords(width, height); 
-  }
-
-// void Milieu::autoClonage()
-// {  
-
-// int rdNb;
-
-//    for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
-//    {
-//       rdNb = static_cast<int>( static_cast<double>( std::rand() )) % 1000 + 1;
-//       if (rdNb == 1) {
-//          //cout << "Auto clonage de Bestiole " << endl;
-//          this->addMember(Bestiole()); // Appel du Copy construcor de Bestiole et ajout dans le milieu 
-//       }
-//    }
-
-// }
-
-  void Milieu::autoClonage(const Bestiole & b, std::vector<Bestiole> temp) 
-  {
-      temp.push_back(b);
-      //listeBestioles.back().initCoords(width, height);
-      //cout << "Liste Bestiole : "<< &listeBestioles << "\n" <<endl;   
   }

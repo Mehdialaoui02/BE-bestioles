@@ -129,24 +129,11 @@ void Bestiole::draw( UImg & support )
    double         xt = x + cos( orientation )*AFF_SIZE/2.1;
    double         yt = y - sin( orientation )*AFF_SIZE/2.1;
 
-  // cout << "Addr Couleur : " << &couleur << endl;
-  // cout << "Couleur : " << couleur[0] << "\n"<< couleur[1] << "\n " << couleur[2] << endl;
-  // cout << "Draw ellipse : "<< endl;
    support.draw_ellipse( x, y, AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., couleur );
-  // cout << "Draw circle : "<< endl;
    support.draw_circle( xt, yt, AFF_SIZE/2., couleur );
-  // cout << "End draw : "<< endl;
 
 }
 
-void Bestiole::autoClone( Milieu & monMilieu , std::vector<Bestiole> temp){
-   int rdNb = static_cast<int>( static_cast<double>( std::rand() )) % 1000 + 1;
-      if (rdNb == 1) {
-           cout << "Auto clonage de Bestiole n°"<< this->identite << endl;
-           monMilieu.autoClonage(*this, temp); // Appel du Copy construcor de Bestiole et ajout dans le milieu 
-      }
-
-}
 
 
 bool operator==( const Bestiole & b1, const Bestiole & b2 )
