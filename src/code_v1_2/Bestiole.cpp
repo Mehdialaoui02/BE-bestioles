@@ -4,11 +4,13 @@
 
 #include <cstdlib>
 #include <cmath>
+#include <vector>
 
 
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
 const double      Bestiole::LIMITE_VUE = 30.;
+const double      Bestiole::LIMITE_OUIE = 30.;
 
 int               Bestiole::next = 0;
 
@@ -21,9 +23,15 @@ Bestiole::Bestiole( void )
    cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
    x = y = 0;
+   detection = 0;
+   camouflage = 0;
    cumulX = cumulY = 0.;
    orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
+
+   /* valeur test, à définir de manière aléatoire plus tard : */
+   camouflage = 0;
+   detection = 1;
 
    couleur = new T[ 3 ];
    couleur[ 0 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
@@ -106,8 +114,8 @@ void Bestiole::bouge( int xLim, int yLim )
 }
 
 
-void Bestiole::action( Milieu & monMilieu )
-{
+void Bestiole::action( Milieu & monMilieu)
+{  
 
    bouge( monMilieu.getWidth(), monMilieu.getHeight() );
 
@@ -134,14 +142,35 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 
 }
 
+/*Renvoie la distance entre deux bestioles*/
+double Bestiole::dist( const Bestiole & b)
+{
 
+   double         dist;
+
+   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );  
+   return(dist);
+}
+
+/*Renvoie true si la détection est meilleure que le camouflage, false sinon*/
+bool Bestiole::detecter( const Bestiole & b)
+{
+   return (b.camouflage <= detection);
+}
+
+/*Méthode modifiée par la feature Yeux*/
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
 
    double         dist;
 
-
    dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
    return ( dist <= LIMITE_VUE );
 
+}
+
+/*Méthode modifiée par la feature Oreille*/
+bool Bestiole::jeTEntends( const Bestiole & b )
+{
+   return false;
 }

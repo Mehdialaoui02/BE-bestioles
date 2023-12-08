@@ -4,9 +4,11 @@
 
 #include "UImg.h"
 #include "Bestiole.h"
+#include "Oreille.h"
 
 #include <iostream>
 #include <vector>
+#include <memory>
 
 using namespace std;
 
@@ -19,6 +21,7 @@ private :
 
    int                     width, height;
    std::vector<Bestiole>   listeBestioles;
+   std::vector<std::shared_ptr<Bestiole>>  listePtrBestioles;
 
 public :
    Milieu( int _width, int _height );
@@ -29,7 +32,7 @@ public :
 
    void step( void );
 
-   void addMember( const Bestiole & b ) { listeBestioles.push_back(b); listeBestioles.back().initCoords(width, height); }
+   void addMember( const Bestiole & b );   
    int nbVoisins( const Bestiole & b );
 
 };

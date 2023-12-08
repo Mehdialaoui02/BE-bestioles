@@ -5,6 +5,7 @@
 #include "UImg.h"
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -19,15 +20,18 @@ private :
    static const double     AFF_SIZE;
    static const double     MAX_VITESSE;
    static const double     LIMITE_VUE;
+   static const double     LIMITE_OUIE;
 
    static int              next;
 
-private :
+protected :
    int               identite;
    int               x, y;
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
+   double            camouflage;
+   double            detection;
 
    T               * couleur;
 
@@ -37,14 +41,17 @@ private :
 public :                                           // Forme canonique :
    Bestiole( void );                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
-   ~Bestiole( void );                              // Destructeur
+   virtual ~Bestiole( void );                              // Destructeur
                                                    // Operateur d'affectation binaire par defaut
-   void action( Milieu & monMilieu );
-   void draw( UImg & support );
+   virtual void action( Milieu & monMilieu);
+   virtual void draw( UImg & support );
 
-   bool jeTeVois( const Bestiole & b ) const;
+   virtual double dist( const Bestiole & b );
+   virtual bool jeTeVois( const Bestiole & b ) const;
+   virtual bool jeTEntends( const Bestiole & b );
+   virtual bool detecter( const Bestiole & b );
 
-   void initCoords( int xLim, int yLim );
+   virtual void initCoords( int xLim, int yLim );
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
 
