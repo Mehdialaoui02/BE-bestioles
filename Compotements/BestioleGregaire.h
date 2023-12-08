@@ -15,7 +15,7 @@ public:
 
     void rejoindreGroupe(int groupe);               // Méthode spécifique à la version gregaire
     double CalculeDirection(Milieu &monMilieu) ;       //  de la méthode action
-    void bouge(int xLim, int yLim) override; 
+    //void bouge(int xLim, int yLim) override; 
     void action(Milieu & monMilieu) override;
 
 };

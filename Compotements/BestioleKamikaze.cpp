@@ -53,9 +53,9 @@ void BestioleKamikaze::Changedir(Milieu &milieu) {
     PlusProche(milieu,&xproche,&yproche);
     //std::cout << "Changedir : x , y  " << xproche << "," << yproche << std::endl;
 
-    // couleur[ 0 ] = static_cast<int>( 40 );
-    // couleur[ 1 ] = static_cast<int>( 163 );
-    // couleur[ 2 ] = static_cast<int>( 116 );
+    couleur[ 0 ] = static_cast<int>( 40 );
+    couleur[ 1 ] = static_cast<int>( 163 );
+    couleur[ 2 ] = static_cast<int>( 116 );
 
     double newOrient;
     if (xproche != -1 || yproche != -1) {
