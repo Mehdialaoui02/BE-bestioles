@@ -35,18 +35,16 @@ void BestiolePeureuse::Changedir(Milieu &monMilieu) {
     int countVisible = 0;
     for (const std::unique_ptr<Bestiole> &bPtr : bestioles) {
         const Bestiole &b = *bPtr; // Dereference the smart pointer
-
         if (this->jeTeVois(b)) {
             countVisible++;
         }
-        if (countVisible >= 2) {
-            std::cout << "should change" << orientation << std::endl;
-            setOrientation(M_PI + getOrientation());
-            std::cout << "changed" << orientation << std::endl;
-        }
-
     }
-    countVisible = 0;
+    if (countVisible >= 3) {
+        std::cout << "should change" << orientation << std::endl;
+        setOrientation(getOrientation() - M_PI);
+        std::cout << "changed" << orientation << std::endl;
+    }
+
 }
  
     void BestiolePeureuse::action(Milieu &monMilieu) {
