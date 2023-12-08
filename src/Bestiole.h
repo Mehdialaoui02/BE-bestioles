@@ -5,6 +5,7 @@
 #include "UImg.h"
 
 #include <iostream>
+#include <memory>
 
 using namespace std;
 
@@ -22,12 +23,14 @@ private :
 
    static int              next;
 
-private :
+protected :
    int               identite;
    int               x, y;
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
+   int               frame_birth;
+   int               frame_age;
 
    T               * couleur;
 
@@ -43,6 +46,11 @@ public :                                           // Forme canonique :
    void draw( UImg & support );
 
    bool jeTeVois( const Bestiole & b ) const;
+   bool is_dead( int run_time );
+   bool collision(std::shared_ptr<Bestiole> b);
+   void after_collision(std::shared_ptr<Bestiole> b);
+
+   int getIdentite( void );
 
    void initCoords( int xLim, int yLim );
 

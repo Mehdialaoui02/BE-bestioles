@@ -4,6 +4,9 @@
 
 #include <iostream>
 #include <CImg.h>
+#include <map>
+#include <string>
+#include "BestioleFactory.h"
 
 using namespace std;
 using namespace cimg_library;
@@ -26,7 +29,7 @@ public :
 
    Milieu & getMilieu( void ) { return *flotte; }
 
-   void run( void );
+   void run( std::map<std::string, int> global_variables, std::map<std::string, std::shared_ptr<BestioleFactory>> factories );
 
 };
 

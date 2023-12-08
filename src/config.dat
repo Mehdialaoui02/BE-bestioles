@@ -1,0 +1,11 @@
+proba_cumsum_peureuse:75
+proba_cumsum_kamikaze:85
+proba_cumsum_prevoyante:90
+proba_cumsum_gregaire:100
+nb_bestioles:5
+spontaneous_birth_proba:150
+key_cooldown:4
+run_time:0
+key_pushed_time:-30
+collision_rand_max:1000
+collision_threashold:17

@@ -6,7 +6,7 @@
 #include <cmath>
 
 
-const double      Bestiole::AFF_SIZE = 8.;
+const double      Bestiole::AFF_SIZE = 8.; //8.
 const double      Bestiole::MAX_VITESSE = 10.;
 const double      Bestiole::LIMITE_VUE = 30.;
 
@@ -63,9 +63,10 @@ Bestiole::~Bestiole( void )
 
 void Bestiole::initCoords( int xLim, int yLim )
 {
-
    x = rand() % xLim;
    y = rand() % yLim;
+   // x = xLim / 2;
+   // y = yLim / 2;
 
 }
 
@@ -144,4 +145,48 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
    dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
    return ( dist <= LIMITE_VUE );
 
+}
+
+bool Bestiole::is_dead( int run_time )
+{
+   return (run_time - this->frame_birth >= this->frame_age);
+}
+
+int Bestiole::getIdentite( void )
+{
+   return this->identite;
+}
+
+bool Bestiole::collision(std::shared_ptr<Bestiole> b)
+{
+   double         xt_1 = x + cos( orientation )*AFF_SIZE/2.1;
+   double         yt_1 = y - sin( orientation )*AFF_SIZE/2.1;
+
+   double         xt_2 = b->x + cos( b->orientation )*AFF_SIZE/2.1;
+   double         yt_2 = b->y - sin( b->orientation )*AFF_SIZE/2.1;
+
+   double diameter = AFF_SIZE;
+
+   return (xt_1 - xt_2) * (xt_1 - xt_2) + (yt_1 - yt_2) * (yt_1 - yt_2) <= diameter * diameter;
+}
+
+void Bestiole::after_collision(std::shared_ptr<Bestiole> b)
+{
+   if (std::abs(orientation - b->orientation) < M_PI / 4.)
+   {
+      if (vitesse > b->vitesse)
+      {
+         orientation = 2 * M_PI - orientation;
+      }
+      else
+      {
+         b->orientation = 2 * M_PI - b->orientation;
+      }
+   }
+   else
+   {
+      double orientation_loc = orientation;
+      orientation = b->orientation;
+      b->orientation = orientation_loc;
+   }
 }
