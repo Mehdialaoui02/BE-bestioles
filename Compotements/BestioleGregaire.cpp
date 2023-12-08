@@ -46,12 +46,16 @@ double BestioleGregaire::CalculeDirection(Milieu &monMilieu) {
 
 
 
-void BestioleGregaire::bouge(int xLim, int yLim) {
-    // Implementation of bouge in BestioleGregaire
-    std::cout << "Je bouge" << std::endl;
-}
+// void BestioleGregaire::bouge(int xLim, int yLim) {
+//     // Implementation of bouge in BestioleGregaire
+//     std::cout << "Je bouge" << std::endl;
+// }
 
 void BestioleGregaire::action(Milieu &monMilieu) {
     //bouge(CalculeDirection(&monMilieu),CalculeDirection(&monMilieu));
+    double newDir;
+    newDir = CalculeDirection(monMilieu);
+    setOrientation(newDir);
+    bouge(monMilieu.getWidth(),monMilieu.getHeight());
 }
 
