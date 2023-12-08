@@ -28,6 +28,7 @@ private :
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
+   double            probaClonage;
 
    T               * couleur;
 
@@ -49,6 +50,7 @@ public :                                           // Forme canonique :
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
 
    int getIdentite();
+   double getProbaClonage();
 
 
 };

@@ -4,6 +4,7 @@
 
 #include <cstdlib>
 #include <cmath>
+#include <random>
 
 
 const double      Bestiole::AFF_SIZE = 8.;
@@ -30,6 +31,17 @@ Bestiole::Bestiole( void )
    couleur[ 1 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
    couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
 
+      //Probabilité de clonage 
+   // Utilisation de random_device pour initialiser le générateur de nombres aléatoires
+    std::random_device rd;
+    std::mt19937 gen(rd());
+
+    // Distribution uniforme entre 0 et 1
+    std::uniform_real_distribution<double> dis(0.000, 0.001);
+
+    // Génération d'un nombre aléatoire entre 0 et 1
+    probaClonage = dis(gen);
+
 }
 
 
@@ -47,6 +59,7 @@ Bestiole::Bestiole( const Bestiole & b )
    vitesse = b.vitesse;
    couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
+   probaClonage = b.probaClonage; 
 
 }
 
@@ -159,3 +172,6 @@ int Bestiole::getIdentite(){
    return identite; 
 }
 
+double Bestiole::getProbaClonage(){
+   return probaClonage; 
+}

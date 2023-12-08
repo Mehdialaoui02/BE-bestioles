@@ -38,7 +38,7 @@ void Milieu::step( void )
       it->action( *this );
       it->draw( *this );
 
-      int rdNb = static_cast<int>( static_cast<double>( std::rand() )) % 1000 + 1;
+      int rdNb = static_cast<int>( static_cast<double>( std::rand() )) % static_cast<int>(1/it->getProbaClonage()) + 1;
       if (rdNb == 1) {
            cout << "Auto clonage de Bestiole n°"<< it->getIdentite() << endl;
            tempClonage.push_back(*it); // Appel du Copy construcor de Bestiole et ajout dans le milieu

@@ -3,6 +3,7 @@
 #include "Milieu.h"
 
 
+
 Aquarium::Aquarium( int width, int height, int _delay ) : CImgDisplay(), delay( _delay )
 {
 
@@ -43,7 +44,7 @@ void Aquarium::run( void )
          cout << " (" << key() << ")" << endl;
          if ( is_keyESC() ) close();
       }
-      
+
       flotte->step();
       display( *flotte );
 
