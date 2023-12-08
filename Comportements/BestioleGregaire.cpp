@@ -2,6 +2,11 @@
 #include "BestioleGregaire.h"
 #include <iostream>
 
+#ifndef M_PI
+    #define M_PI 3.14159265358979323846
+#endif
+
+
 BestioleGregaire::BestioleGregaire() : Bestiole(), groupe(0) {
 }
 
@@ -21,22 +26,32 @@ void BestioleGregaire::setDirection(Milieu &monMilieu) {
     const std::vector<std::unique_ptr<Bestiole>> &bestioles = monMilieu.getBestioles();
 
     // Variables for calculating average direction
-    double sumOrientation = 0;
+    double sumX = 0;
+    double sumY = 0;
+    int size = 0;
+    double newOrient;
 
     for (const std::unique_ptr<Bestiole> &bPtr : bestioles) {
         const Bestiole &b = *bPtr; // Dereference the smart pointer
         if (this->jeTeVois(b)) {
             // Accumulate orientation for visible Bestioles
-            sumOrientation += b.getOrientation();
+            cout << "Visible Bestiole at Y: " << b.getY() << endl;
+            sumX += b.getX();
+            sumY += b.getY();
+            size++;
         }
     }
 
-    cout << sumOrientation / (bestioles.size()) << endl;
-    if (bestioles.size() != 0 and getX() < monMilieu.getWidth()/2) {
-        setOrientation(sumOrientation / (bestioles.size()));
+    if (size != 0) {
+        newOrient = 2 * M_PI - atan2((sumY / size - getY()), (sumX / size - getX()));
+        cout << "Sum of Y: " << sumY << endl;
+        cout << "New Orientation: " << newOrient << endl;
+        setOrientation(newOrient);
+    } else {
+        cout << "No visible Bestioles." << endl;
     }
-
 }
+
 
 
 void BestioleGregaire::action(Milieu &monMilieu) {
