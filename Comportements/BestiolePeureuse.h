@@ -19,4 +19,4 @@ public:
     void action(Milieu &milieu) override;
 };
 
-#endif // BESTIOLE_GREGAIRE_H
+#endif // BESTIOLE_PEUREUSE_H

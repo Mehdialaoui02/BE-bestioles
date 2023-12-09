@@ -33,7 +33,7 @@ void BestioleGregaire::setDirection(Milieu &monMilieu) {
 
     for (const std::unique_ptr<Bestiole> &bPtr : bestioles) {
         const Bestiole &b = *bPtr; // Dereference the smart pointer
-        if (this->jeTeVois(b)) {
+        if (this != &b && this->jeTeVois(b)) {
             // Accumulate orientation for visible Bestioles
             cout << "Visible Bestiole at Y: " << b.getY() << endl;
             sumX += b.getX();

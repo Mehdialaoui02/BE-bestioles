@@ -20,4 +20,4 @@ public:
 
 };
 
-#endif // BESTIOLE_GREGAIRE_H
+#endif // BESTIOLE_KAMIKAZE_H

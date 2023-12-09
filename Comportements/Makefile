@@ -1,5 +1,5 @@
-main : main.cpp Aquarium.o Bestiole.o Milieu.o BestioleGregaire.o BestiolePeureuse.o BestioleKamikaze.o
-	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Bestiole.o Milieu.o BestioleGregaire.o BestiolePeureuse.o BestioleKamikaze.o -I. -lwinpthread -lgdi32
+main : main.cpp Aquarium.o Bestiole.o Milieu.o BestioleGregaire.o BestiolePeureuse.o BestioleKamikaze.o BestiolePrevoyante.o
+	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Bestiole.o Milieu.o BestioleGregaire.o BestiolePeureuse.o BestioleKamikaze.o BestiolePrevoyante.o -I. -lwinpthread -lgdi32
 
 Aquarium.o : Aquarium.h Aquarium.cpp
 	g++ -Wall -std=c++11 -c Aquarium.cpp -I.
@@ -17,6 +17,9 @@ BestiolePeureuse.o : BestiolePeureuse.h BestiolePeureuse.cpp
 	g++ -Wall -std=c++11 -c BestiolePeureuse.cpp -I.
 BestioleKamikaze.o : BestioleKamikaze.h BestioleKamikaze.cpp
 	g++ -Wall -std=c++11 -c BestioleKamikaze.cpp -I.
+
+BestiolePrevoyante.o : BestiolePrevoyante.h BestiolePrevoyante.cpp
+	g++ -Wall -std=c++11 -c BestiolePrevoyante.cpp -I.
 
 
 clean:
