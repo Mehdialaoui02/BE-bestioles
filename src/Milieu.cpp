@@ -88,8 +88,10 @@ void Milieu::step( std::map<std::string, int> global_variables, std::map<std::st
    {
       for (size_t j = i+1; j < listeBestioles.size(); j++)
       {
-         if (listeBestioles[i]->collision(listeBestioles[j]))
+         int collision_last_frame_ =  listeBestioles[i]->getCollisionLastFrame();
+         if (listeBestioles[i]->collision(listeBestioles[j]) && (global_variables["run_time"] - collision_last_frame_) > global_variables["collision_cool_down"])
          {
+            listeBestioles[i]->setCollisionLastFrame(global_variables["run_time"]);
             double coin_flip_i = std::rand() % global_variables["collision_rand_max"];
             double coin_flip_j = std::rand() % global_variables["collision_rand_max"];
             bool deces = false;

@@ -3,6 +3,7 @@
 BestiolePeureuse::BestiolePeureuse( void ) : Bestiole()
 {
     this->identite = 2;
+    
     std::cout << "const peureuse d'identité " << identite << std::endl;
     // T    p_color[] = { (T)73, (T)180, (T)204 };
     // this->couleur = p_color;

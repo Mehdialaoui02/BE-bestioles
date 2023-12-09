@@ -29,8 +29,10 @@ protected :
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
+
    int               frame_birth;
    int               frame_age;
+   int               collision_last_frame;
 
    T               * couleur;
 
@@ -49,6 +51,8 @@ public :                                           // Forme canonique :
    bool is_dead( int run_time );
    bool collision(std::shared_ptr<Bestiole> b);
    void after_collision(std::shared_ptr<Bestiole> b);
+   int getCollisionLastFrame( void );
+   void setCollisionLastFrame( int collision_last_frame_ );
 
    int getIdentite( void );
 

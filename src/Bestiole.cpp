@@ -6,7 +6,7 @@
 #include <cmath>
 
 
-const double      Bestiole::AFF_SIZE = 8.; //8.
+const double      Bestiole::AFF_SIZE = 20.; //8.
 const double      Bestiole::MAX_VITESSE = 10.;
 const double      Bestiole::LIMITE_VUE = 30.;
 
@@ -17,6 +17,7 @@ Bestiole::Bestiole( void )
 {
 
    identite = ++next;
+   collision_last_frame = 0;
 
    cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
@@ -37,6 +38,7 @@ Bestiole::Bestiole( const Bestiole & b )
 {
 
    identite = ++next;
+   collision_last_frame = b.collision_last_frame;
 
    cout << "const Bestiole (" << identite << ") par copie" << endl;
 
@@ -189,4 +191,14 @@ void Bestiole::after_collision(std::shared_ptr<Bestiole> b)
       orientation = b->orientation;
       b->orientation = orientation_loc;
    }
+}
+
+int Bestiole::getCollisionLastFrame( void )
+{
+   return this->collision_last_frame;
+}
+
+void Bestiole::setCollisionLastFrame( int collision_last_frame_ )
+{
+   this->collision_last_frame = collision_last_frame_;
 }
