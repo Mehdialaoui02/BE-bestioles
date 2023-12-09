@@ -1,6 +1,7 @@
 #include "Milieu.h"
 #include "BestioleKamikaze.h"
 #include <iostream>
+#include <cmath>
 
 #ifndef M_PI
     #define M_PI 3.14159265358979323846
@@ -32,7 +33,7 @@ void BestioleKamikaze::PlusProche(Milieu &monMilieu, int* xproche, int* yproche)
             distanceMin = distance;
             *xproche = b.getX(); 
             *yproche = b.getY();
-             
+            
         }
     }
 }
@@ -49,20 +50,13 @@ void BestioleKamikaze::setDirection(Milieu &milieu) {
     couleur[ 1 ] = static_cast<int>( 163 );
     couleur[ 2 ] = static_cast<int>( 116 );
 
-    vitesse = 5;
-
     double newOrient;
-    // cout << (xproche - getX()) << endl;
-    // cout << (yproche - getY()) << endl;
     if (xproche != -1 || yproche != -1) {
-        if (xproche - getX() < 10 ) {
-            newOrient = M_PI;
-            setOrientation(newOrient);
+        if (xproche - getX() == 0) {
+            newOrient = 0;
         } 
         else {
-            
-            newOrient = 2*M_PI - atan((yproche - getY())/(xproche - getX()));
-            cout << (xproche - getX()) << endl;
+            newOrient = - std::atan2((yproche - getY()) , (xproche - getX()));
             setOrientation(newOrient);
         }
         }     
@@ -73,9 +67,3 @@ void BestioleKamikaze::setDirection(Milieu &milieu) {
         setDirection(monMilieu);
         bouge(monMilieu.getWidth(),monMilieu.getHeight());
     }   
-
-
-
-
-
-
