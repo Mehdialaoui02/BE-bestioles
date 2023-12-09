@@ -26,6 +26,7 @@ BestiolePeureuse::~BestiolePeureuse() {
 void BestiolePeureuse::setDirection(Milieu &monMilieu) {
     const std::vector<std::unique_ptr<Bestiole>> &bestioles = monMilieu.getBestioles();
 
+    DoubleVitesse = false;
     int countVisible = 0;
     for (const std::unique_ptr<Bestiole> &bPtr : bestioles) {
         const Bestiole &b = *bPtr; // Dereference the smart pointer
@@ -33,10 +34,12 @@ void BestiolePeureuse::setDirection(Milieu &monMilieu) {
             countVisible++;
         }
     }
-    if (countVisible >= 3) {
+    if (countVisible >= 2) {
         std::cout << "should change" << orientation << std::endl;
         setOrientation(getOrientation() - M_PI);
         std::cout << "changed" << orientation << std::endl;
+        DoubleVitesse = true;
+        vitesse *= 2;
     }
 
 }
@@ -44,6 +47,9 @@ void BestiolePeureuse::setDirection(Milieu &monMilieu) {
     void BestiolePeureuse::action(Milieu &monMilieu) {
         setDirection(monMilieu);
         bouge(monMilieu.getWidth(),monMilieu.getHeight());
+        if (DoubleVitesse) {
+            vitesse = vitesse/2;
+        }
     }   
 
 

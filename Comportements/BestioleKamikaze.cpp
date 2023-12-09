@@ -29,11 +29,14 @@ void BestioleKamikaze::PlusProche(Milieu &monMilieu, int* xproche, int* yproche)
         const Bestiole &b = *bPtr; // Dereference the smart pointer
         double distance = std::sqrt(std::pow(getCoords().first - b.getCoords().first, 2) +
                                     std::pow(getCoords().second - b.getCoords().second, 2));
-        if (distance < distanceMin && distance != 0) {
-            distanceMin = distance;
-            *xproche = b.getX(); 
-            *yproche = b.getY();
-            
+        
+        if (this != &b && this->jeTeVois(b)) {
+            if (distance < distanceMin && distance != 0) {
+                distanceMin = distance;
+                *xproche = b.getX(); 
+                *yproche = b.getY();
+                
+            }
         }
     }
 }

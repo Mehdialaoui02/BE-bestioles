@@ -13,7 +13,6 @@ public:
     BestioleKamikaze(const BestioleKamikaze &bg);   // Constructeur de copies
     ~BestioleKamikaze();                            // Destructeur
 
-    void rejoindreGroupe(int groupe);               // Méthode spécifique à la version Peureuse
     void PlusProche(Milieu &monMilieu, int* xproche, int* yproche);
     void setDirection(Milieu &monMilieu);
     void action( Milieu & monMilieu ) override;

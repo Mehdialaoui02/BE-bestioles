@@ -8,6 +8,7 @@ class BestiolePeureuse : public Bestiole {
 
 protected:
     int groupe;
+    boolean DoubleVitesse;
 
 public:
     BestiolePeureuse();                             // Constructeur par défaut

@@ -20,17 +20,17 @@ int main() {
         ecosysteme.getMilieu().addMember(std::unique_ptr<Bestiole>(new Bestiole()));
     }
 
-    // auto bestiole1 = std::unique_ptr<BestiolePeureuse>(new BestiolePeureuse());
-    // ecosysteme.getMilieu().addMember(std::move(bestiole1));
+    auto bestiole1 = std::unique_ptr<BestiolePeureuse>(new BestiolePeureuse());
+    ecosysteme.getMilieu().addMember(std::move(bestiole1));
 
-    // auto bestiole2 = std::unique_ptr<BestioleKamikaze>(new BestioleKamikaze());
-    // ecosysteme.getMilieu().addMember(std::move(bestiole2));
+    auto bestiole2 = std::unique_ptr<BestioleKamikaze>(new BestioleKamikaze());
+    ecosysteme.getMilieu().addMember(std::move(bestiole2));
 
-    // auto bestiole3 = std::unique_ptr<BestioleGregaire>(new BestioleGregaire());
-    // ecosysteme.getMilieu().addMember(std::move(bestiole3));
+    auto bestiole3 = std::unique_ptr<BestioleGregaire>(new BestioleGregaire());
+    ecosysteme.getMilieu().addMember(std::move(bestiole3));
 
-    // auto bestiole4 = std::unique_ptr<BestiolePrevoyante>(new BestiolePrevoyante());
-    // ecosysteme.getMilieu().addMember(std::move(bestiole4));
+    auto bestiole4 = std::unique_ptr<BestiolePrevoyante>(new BestiolePrevoyante());
+    ecosysteme.getMilieu().addMember(std::move(bestiole4));
 
     auto bestiole5 = std::unique_ptr<BestioleMultiPerso>(new BestioleMultiPerso());
     ecosysteme.getMilieu().addMember(std::move(bestiole5));
