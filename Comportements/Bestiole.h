@@ -19,6 +19,8 @@ protected :
    static const double     AFF_SIZE;
    static const double     MAX_VITESSE;
    static const double     LIMITE_VUE;
+   // static std::unordered_map<std::string, int> COMPORTEMENTS;
+
 
    static int              next;
 
@@ -32,6 +34,7 @@ protected :
 
 protected :
    int               x, y;
+   
 
 protected :
    virtual void bouge( int xLim, int yLim );
@@ -83,6 +86,9 @@ public :                                           // Forme canonique :
    int getY() const { return y; }
    void setY(int newY) { y = newY; }
 
+   //For multiPerso :
+   void setDirection(Milieu & monMilieu) {};
+
    static double getAffSize() { return AFF_SIZE; }
 
    // Getter for MAX_VITESSE
@@ -93,6 +99,8 @@ public :                                           // Forme canonique :
 
    // Getter for next
    static int getNext() { return next; }
+
+
    
 };
 

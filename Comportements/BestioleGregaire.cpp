@@ -17,11 +17,6 @@ BestioleGregaire::~BestioleGregaire() {
 }
 
 
-void BestioleGregaire::rejoindreGroupe(int groupe) {
-    // Implémentation de la méthode spécifique à la version gregaire ici
-    this->groupe = groupe;
-}
-
 void BestioleGregaire::setDirection(Milieu &monMilieu) {
     const std::vector<std::unique_ptr<Bestiole>> &bestioles = monMilieu.getBestioles();
 

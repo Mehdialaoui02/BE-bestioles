@@ -6,7 +6,7 @@
     #define M_PI 3.14159265358979323846
 #endif
 
-BestioleKamikaze::BestioleKamikaze() : Bestiole(), groupe(3) {
+BestioleKamikaze::BestioleKamikaze() : Bestiole(), groupe(1) {
 }
 
 BestioleKamikaze::BestioleKamikaze(const BestioleKamikaze &bg) : Bestiole(bg), groupe(bg.groupe) {
@@ -15,10 +15,6 @@ BestioleKamikaze::BestioleKamikaze(const BestioleKamikaze &bg) : Bestiole(bg), g
 BestioleKamikaze::~BestioleKamikaze(){
 }
 
-
-void BestioleKamikaze::rejoindreGroupe(int groupe) {
-    this->groupe = groupe;
-}
 
 void BestioleKamikaze::PlusProche(Milieu &monMilieu, int* xproche, int* yproche) {
     const std::vector<std::unique_ptr<Bestiole>> &bestioles = monMilieu.getBestioles();
@@ -42,7 +38,7 @@ void BestioleKamikaze::PlusProche(Milieu &monMilieu, int* xproche, int* yproche)
 }
 
 
-void BestioleKamikaze::Changedir(Milieu &milieu) {
+void BestioleKamikaze::setDirection(Milieu &milieu) {
 
     // Obtenir la bestiole la plus proche
     int xproche;
@@ -74,7 +70,7 @@ void BestioleKamikaze::Changedir(Milieu &milieu) {
 
 
     void BestioleKamikaze::action(Milieu &monMilieu) {
-        Changedir(monMilieu);
+        setDirection(monMilieu);
         bouge(monMilieu.getWidth(),monMilieu.getHeight());
     }   
 

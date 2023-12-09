@@ -6,8 +6,7 @@
     #define M_PI 3.14159265358979323846
 #endif
 
-BestiolePeureuse::BestiolePeureuse() : Bestiole(), groupe(0) {
-    couleur = new T[ 3 ];
+BestiolePeureuse::BestiolePeureuse() : Bestiole(), groupe(2) {
     couleur[ 0 ] = 200;
     couleur[ 1 ] = 200;
     couleur[ 2 ] = 200;
@@ -24,12 +23,7 @@ BestiolePeureuse::~BestiolePeureuse() {
 }
 
 
-void BestiolePeureuse::rejoindreGroupe(int groupe) {
-    // Implémentation de la méthode spécifique à la version Peureuse ici
-    this->groupe = groupe;
-}
-
-void BestiolePeureuse::Changedir(Milieu &monMilieu) {
+void BestiolePeureuse::setDirection(Milieu &monMilieu) {
     const std::vector<std::unique_ptr<Bestiole>> &bestioles = monMilieu.getBestioles();
 
     int countVisible = 0;
@@ -48,7 +42,7 @@ void BestiolePeureuse::Changedir(Milieu &monMilieu) {
 }
  
     void BestiolePeureuse::action(Milieu &monMilieu) {
-        Changedir(monMilieu);
+        setDirection(monMilieu);
         bouge(monMilieu.getWidth(),monMilieu.getHeight());
     }   
 

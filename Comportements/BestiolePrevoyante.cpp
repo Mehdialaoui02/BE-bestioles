@@ -5,7 +5,7 @@
     #define M_PI 3.14159265358979323846
 #endif
 
-BestiolePrevoyante::BestiolePrevoyante() : groupe(0) {
+BestiolePrevoyante::BestiolePrevoyante() : groupe(3) {
 }
 
 BestiolePrevoyante::BestiolePrevoyante(const BestiolePrevoyante &bp) : Bestiole(bp), groupe(bp.groupe) {
@@ -19,7 +19,7 @@ void BestiolePrevoyante::rejoindreGroupe(int newGroupe) {
     groupe = newGroupe;
 }
 
-void BestiolePrevoyante::Changedir(Milieu &milieu) {
+void BestiolePrevoyante::setDirection(Milieu &milieu) {
     const std::vector<std::unique_ptr<Bestiole>> &bestioles = milieu.getBestioles();
 
     // Variables for calculating average direction
@@ -52,6 +52,6 @@ void BestiolePrevoyante::Changedir(Milieu &milieu) {
 }
 
 void BestiolePrevoyante::action(Milieu &milieu) {
-    Changedir(milieu);
+    setDirection(milieu);
     bouge(milieu.getWidth(), milieu.getHeight());
 }

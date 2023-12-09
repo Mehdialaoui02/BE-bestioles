@@ -8,7 +8,7 @@
 
 #include <cstdlib>
 #include <cmath>
-
+#include <unordered_map>
 
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
@@ -16,7 +16,12 @@ const double      Bestiole::LIMITE_VUE = 30.;
 
 int               Bestiole::next = 0;
 
-
+// std::unordered_map<std::string, int> Bestiole::COMPORTEMENTS= {
+//     {0, new BestioleGregaire()},
+//     {1, new BestioleKamikaze()},
+//     {2, new BestiolePeureuse()},
+//     {3, new BestiolePrevoyante()}
+// };
 Bestiole::Bestiole( void )
 {
 
@@ -113,7 +118,6 @@ void Bestiole::bouge( int xLim, int yLim )
 void Bestiole::action( Milieu & monMilieu )
 {
    bouge( monMilieu.getWidth(), monMilieu.getHeight() );
-
 }
 
 

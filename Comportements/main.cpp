@@ -5,6 +5,7 @@
 #include "BestiolePeureuse.h"
 #include "BestioleKamikaze.h"
 #include "BestiolePrevoyante.h"
+#include "BestioleMultiPerso.h"
 
 #include <iostream>
 
@@ -28,8 +29,11 @@ int main() {
     // auto bestiole3 = std::unique_ptr<BestioleGregaire>(new BestioleGregaire());
     // ecosysteme.getMilieu().addMember(std::move(bestiole3));
 
-    auto bestiole4 = std::unique_ptr<BestiolePrevoyante>(new BestiolePrevoyante());
-    ecosysteme.getMilieu().addMember(std::move(bestiole4));
+    // auto bestiole4 = std::unique_ptr<BestiolePrevoyante>(new BestiolePrevoyante());
+    // ecosysteme.getMilieu().addMember(std::move(bestiole4));
+
+    auto bestiole5 = std::unique_ptr<BestioleMultiPerso>(new BestioleMultiPerso());
+    ecosysteme.getMilieu().addMember(std::move(bestiole5));
     // Run the simulation
     ecosysteme.run();
 

@@ -14,7 +14,7 @@ public:
     ~BestiolePrevoyante();                            // Destructeur
 
     void rejoindreGroupe(int groupe);               // Méthode spécifique à la version Peureuse
-    void Changedir(Milieu &milieu);
+    void setDirection(Milieu &milieu);
     void action(Milieu &milieu) override;
 };
 

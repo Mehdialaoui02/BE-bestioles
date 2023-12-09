@@ -5,7 +5,8 @@
 #include "Milieu.h"
 
 class BestiolePeureuse : public Bestiole {
-private:
+
+protected:
     int groupe;
 
 public:
@@ -15,7 +16,7 @@ public:
 
     void rejoindreGroupe(int groupe);               // Méthode spécifique à la version Peureuse
     void CalculeDirection(Milieu &monMilieu) ;       //  de la méthode action
-    void Changedir(Milieu &milieu);
+    void setDirection(Milieu &milieu);
     void action(Milieu &milieu) override;
 };
 

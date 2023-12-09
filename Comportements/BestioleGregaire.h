@@ -5,7 +5,7 @@
 #include "Milieu.h"
 
 class BestioleGregaire : public Bestiole {
-private:
+protected:
     int groupe;
 
 public:
@@ -13,8 +13,7 @@ public:
     BestioleGregaire(const BestioleGregaire &bg);   // Constructeur de copies
     ~BestioleGregaire();                            // Destructeur
 
-    void rejoindreGroupe(int groupe);               // Méthode spécifique à la version gregaire
-    void setDirection(Milieu &monMilieu) ;       //  de la méthode action
+    void setDirection(Milieu &monMilieu);       //  de la méthode action
     void action(Milieu & monMilieu) override;
 
 };
