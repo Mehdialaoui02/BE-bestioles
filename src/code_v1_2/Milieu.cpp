@@ -42,6 +42,7 @@ void Milieu::step( void )
       if (rdNb == 1) {
            cout << "Auto clonage de Bestiole n°"<< it->getIdentite() << endl;
            tempClonage.push_back(*it); // Appel du Copy construcor de Bestiole et ajout dans le milieu
+           tempClonage.back().initSpeedVector(); // Initialisation du vecteur vitesse de la bestiole clonée
            
       }
 

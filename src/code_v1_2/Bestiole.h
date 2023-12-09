@@ -46,6 +46,7 @@ public :                                           // Forme canonique :
    bool jeTeVois( const Bestiole & b ) const;
 
    void initCoords( int xLim, int yLim );
+   void initSpeedVector();
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
 

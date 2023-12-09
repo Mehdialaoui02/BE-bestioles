@@ -91,6 +91,12 @@ void Bestiole::initCoords( int xLim, int yLim )
 
 }
 
+void Bestiole::initSpeedVector()
+{
+   orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
+   vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
+}
+
 
 void Bestiole::bouge( int xLim, int yLim )
 {
