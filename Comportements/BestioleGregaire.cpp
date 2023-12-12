@@ -30,7 +30,6 @@ void BestioleGregaire::setDirection(Milieu &monMilieu) {
         const Bestiole &b = *bPtr; // Dereference the smart pointer
         if (this != &b && this->jeTeVois(b)) {
             // Accumulate orientation for visible Bestioles
-            cout << "Visible Bestiole at Y: " << b.getY() << endl;
             sumX += b.getX();
             sumY += b.getY();
             size++;
@@ -39,11 +38,8 @@ void BestioleGregaire::setDirection(Milieu &monMilieu) {
 
     if (size != 0) {
         newOrient = 2 * M_PI - atan2((sumY / size - getY()), (sumX / size - getX()));
-        cout << "Sum of Y: " << sumY << endl;
-        cout << "New Orientation: " << newOrient << endl;
         setOrientation(newOrient);
     } else {
-        cout << "No visible Bestioles." << endl;
     }
 }
 

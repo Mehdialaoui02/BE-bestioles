@@ -18,7 +18,7 @@ public:
 
     void setComportement();       //  de la méthode action
     void setDirection(Milieu &monMilieu);       //  de la méthode action
-    void action(Milieu & monMilieu) override;
+    void action( Milieu & monMilieu ) override;
 
 };
 

@@ -31,7 +31,6 @@ void BestiolePrevoyante::setDirection(Milieu &milieu) {
     for (const std::unique_ptr<Bestiole> &bPtr : bestioles) {
         const Bestiole &b = *bPtr; // Dereference the smart pointer
         if (this != &b && this->jeTeVois(b)) {
-            cout << "Visible Bestiole at Y: " << b.getY() << endl;
             sumX += b.getX();
             sumY += b.getY();
             size++;
@@ -41,8 +40,6 @@ void BestiolePrevoyante::setDirection(Milieu &milieu) {
     if (size != 0) {
         if (atan2((sumY / size - getY()), (sumX / size - getX())) != 0) {
         newOrient =  M_PI - atan2((sumY / size - getY()), (sumX / size - getX()));
-        cout << "Sum of Y: " << sumY << endl;
-        cout << "New Orientation: " << newOrient << endl;
         setOrientation(newOrient);
         
     } else {

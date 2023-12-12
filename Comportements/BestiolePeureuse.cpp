@@ -35,9 +35,7 @@ void BestiolePeureuse::setDirection(Milieu &monMilieu) {
         }
     }
     if (countVisible >= 2) {
-        std::cout << "should change" << orientation << std::endl;
         setOrientation(getOrientation() - M_PI);
-        std::cout << "changed" << orientation << std::endl;
         DoubleVitesse = true;
         vitesse *= 2;
     }
