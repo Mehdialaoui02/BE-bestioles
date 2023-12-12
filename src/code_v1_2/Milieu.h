@@ -3,8 +3,7 @@
 
 
 #include "UImg.h"
-#include "Bestiole.h"
-#include "Oreille.h"
+#include "IDecorator.h"
 
 #include <iostream>
 #include <vector>
@@ -12,6 +11,7 @@
 
 using namespace std;
 
+class IDecorator;
 
 class Milieu : public UImg
 {
@@ -20,8 +20,8 @@ private :
    static const T          white[];
 
    int                     width, height;
-   std::vector<Bestiole>   listeBestioles;
-   std::vector<std::shared_ptr<Bestiole>>  listePtrBestioles;
+   std::vector<IDecorator>   listeBestioles;
+   std::vector<IDecorator*>  listePtrBestioles;
 
 public :
    Milieu( int _width, int _height );
@@ -32,8 +32,8 @@ public :
 
    void step( void );
 
-   void addMember( const Bestiole & b );   
-   int nbVoisins( const Bestiole & b );
+   void addMember(IDecorator* bestiole);   
+   int nbVoisins(IDecorator* bestiole);
 
 };
 

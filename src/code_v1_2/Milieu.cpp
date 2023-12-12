@@ -29,40 +29,40 @@ void Milieu::step( void )
 {
 
    cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
-   for ( std::vector<std::shared_ptr<Bestiole>>::iterator it = listePtrBestioles.begin() ; it != listePtrBestioles.end() ; ++it )
+   for ( IDecorator* bptr1 : listePtrBestioles )
    {
-         for ( std::vector<Bestiole>::iterator it2 = listeBestioles.begin() ; it2 != listeBestioles.end() ; ++it2 )
+         for ( IDecorator* bptr2 : listePtrBestioles)
       {
-         /*(*it)->jeTEntends(*it2);*/
+         if (!(bptr1==bptr2)) {
+            bptr1->jeTEntends(bptr2);
+         }
        }
 
-      (*it)->action( *this );
-      (*it)->draw( *this );
+      bptr1->action( *this );
+      bptr1->draw( *this );
 
    }
 
 }
 
-void Milieu::addMember( const Bestiole & b ) {
+void Milieu::addMember(IDecorator* bestiole) {
    { 
-      auto sp1 = make_shared<Bestiole>(b);
 
-      listeBestioles.push_back(b); 
-      /*listePtrBestioles.push_back(sp1);*/
+      listeBestioles.push_back(*bestiole); 
+      listePtrBestioles.push_back(bestiole);
 
-      (listeBestioles.back()).initCoords(width, height); 
+      (listeBestioles.back()).initCoords(width, height);
       }
 } 
 
 
-int Milieu::nbVoisins( const Bestiole & b )
+int Milieu::nbVoisins(IDecorator* bestiole)
 {
 
    int         nb = 0;
 
-
-   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
-      if ( !(b == *it) && b.jeTeVois(*it) )
+   for ( std::vector<IDecorator*>::iterator it = listePtrBestioles.begin() ; it != listePtrBestioles.end() ; ++it )
+      if ( !(bestiole == *it) && (*bestiole).jeTeVois(*it) )
          ++nb;
 
    return nb;

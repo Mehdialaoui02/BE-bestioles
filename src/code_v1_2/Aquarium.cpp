@@ -13,6 +13,8 @@ Aquarium::Aquarium( int width, int height, int _delay ) : CImgDisplay(), delay( 
    cout << "const Aquarium" << endl;
 
    flotte = new Milieu( width, height );
+
+   
    assign( *flotte, "Simulation d'ecosysteme" );
 
    move( static_cast<int>((screenWidth-width)/2), static_cast<int>((screenHeight-height)/2) );

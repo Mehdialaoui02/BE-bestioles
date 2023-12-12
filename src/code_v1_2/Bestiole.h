@@ -1,26 +1,24 @@
 #ifndef _BESTIOLES_H_
 #define _BESTIOLES_H_
 
-
+#include "IDecorator.h"
 #include "UImg.h"
 
 #include <iostream>
 #include <vector>
 
 using namespace std;
-
+ 
 
 class Milieu;
 
 
-class Bestiole
+class Bestiole: public IDecorator
 {
 
 private :
    static const double     AFF_SIZE;
    static const double     MAX_VITESSE;
-   static const double     LIMITE_VUE;
-   static const double     LIMITE_OUIE;
 
    static int              next;
 
@@ -35,26 +33,31 @@ protected :
 
    T               * couleur;
 
-private :
-   void bouge( int xLim, int yLim );
-
 public :                                           // Forme canonique :
    Bestiole( void );                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
-   virtual ~Bestiole( void );                              // Destructeur
-                                                   // Operateur d'affectation binaire par defaut
-   virtual void action( Milieu & monMilieu);
-   virtual void draw( UImg & support );
+   virtual ~Bestiole( void );                      // Destructeur
 
-   virtual double dist( const Bestiole & b );
-   virtual bool jeTeVois( const Bestiole & b ) const;
-   virtual bool jeTEntends( const Bestiole & b );
-   virtual bool detecter( const Bestiole & b );
+   //IDecorator :
+   void action( Milieu & monMilieu);
+   void draw( UImg & support );
+   void bouge( int xLim, int yLim );
 
-   virtual void initCoords( int xLim, int yLim );
+   double dist(IDecorator* bestiole);
+   bool jeTeVois(IDecorator* bestiole);
+   bool jeTEntends(IDecorator* bestiole);
+   bool detecter(IDecorator* bestiole);
+   void initCoords( int xLim, int yLim );
+   
+   int getX(){return x;};
+   int getY(){return y;};
+   double getOrientation(){return orientation;};
+   double getCamouflage(){return camouflage;};
+   void setCamouflage(double new_camouflage){camouflage = new_camouflage;};
+   double getVitesse(){return vitesse;};
+   void setVitesse(double new_vitesse){vitesse = new_vitesse;};
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
-
 };
 
 

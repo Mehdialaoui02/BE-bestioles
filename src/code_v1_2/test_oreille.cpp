@@ -14,9 +14,8 @@ int main()
 
     Aquarium ecosysteme( 640, 480, 30 );
 
-    ecosysteme.getMilieu().addMember(Oreille(Bestiole()));
-    ecosysteme.getMilieu().addMember(Oreille(Bestiole()));
-    ecosysteme.getMilieu().addMember(Oreille(Bestiole()));
+    ecosysteme.getMilieu().addMember(new Oreille(new Bestiole()));
+    ecosysteme.getMilieu().addMember(new Oreille(new Bestiole()));
     ecosysteme.run();
    
 

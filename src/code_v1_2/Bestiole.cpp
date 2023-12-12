@@ -1,5 +1,5 @@
 #include "Bestiole.h"
-
+#include "IDecorator.h"
 #include "Milieu.h"
 
 #include <cstdlib>
@@ -9,18 +9,15 @@
 
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
-const double      Bestiole::LIMITE_VUE = 30.;
-const double      Bestiole::LIMITE_OUIE = 30.;
 
 int               Bestiole::next = 0;
 
 
 Bestiole::Bestiole( void )
 {
-
-   identite = ++next;
-
    cout << "const Bestiole (" << identite << ") par defaut" << endl;
+
+   identite = ++next;  
 
    x = y = 0;
    detection = 0;
@@ -39,7 +36,6 @@ Bestiole::Bestiole( void )
    couleur[ 2 ] = static_cast<int>( static_cast<double>( rand() )/RAND_MAX*230. );
 
 }
-
 
 Bestiole::Bestiole( const Bestiole & b )
 {
@@ -77,7 +73,7 @@ void Bestiole::initCoords( int xLim, int yLim )
 
 }
 
-
+/*Méthode modifiée par la feature Nageoires et Carapaces*/
 void Bestiole::bouge( int xLim, int yLim )
 {
 
@@ -110,7 +106,6 @@ void Bestiole::bouge( int xLim, int yLim )
       y = static_cast<int>( ny );
       cumulY += ny - y;
    }
-
 }
 
 
@@ -143,34 +138,29 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 }
 
 /*Renvoie la distance entre deux bestioles*/
-double Bestiole::dist( const Bestiole & b)
+double Bestiole::dist(IDecorator* bestiole)
 {
 
-   double         dist;
+   double dist;
 
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );  
+   dist = std::sqrt( (x-bestiole->getX())*(x-bestiole->getX()) + (y-bestiole->getY())*(y-bestiole->getY()));  
    return(dist);
 }
 
 /*Renvoie true si la détection est meilleure que le camouflage, false sinon*/
-bool Bestiole::detecter( const Bestiole & b)
+bool Bestiole::detecter(IDecorator* bestiole)
 {
-   return (b.camouflage <= detection);
+   return (bestiole->getCamouflage() <= detection);
 }
 
 /*Méthode modifiée par la feature Yeux*/
-bool Bestiole::jeTeVois( const Bestiole & b ) const
+bool Bestiole::jeTeVois(IDecorator* bestiole)
 {
-
-   double         dist;
-
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   return ( dist <= LIMITE_VUE );
-
+   return false;
 }
 
 /*Méthode modifiée par la feature Oreille*/
-bool Bestiole::jeTEntends( const Bestiole & b )
+bool Bestiole::jeTEntends(IDecorator* bestiole)
 {
    return false;
 }
