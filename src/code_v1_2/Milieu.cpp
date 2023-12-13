@@ -35,9 +35,9 @@ void Milieu::step( void )
       {
          if (!(bptr1==bptr2)) {
             bptr1->jeTEntends(bptr2);
+            bptr1->jeTeVois(bptr2);
          }
-       }
-
+      }
       bptr1->action( *this );
       bptr1->draw( *this );
 

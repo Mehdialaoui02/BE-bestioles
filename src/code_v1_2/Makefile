@@ -1,10 +1,10 @@
-all : test_oreille main
+all : test main
 
 main : main.cpp Aquarium.o Milieu.o IDecorator.o Oreille.o Nageoire.o Carapace.o Camouflage.o Yeux.o Bestiole.o Decorator.o
 	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Milieu.o IDecorator.o Oreille.o Nageoire.o Carapace.o Camouflage.o Yeux.o Bestiole.o Decorator.o -I . -lX11 -lpthread
 
-test_oreille : test_oreille.cpp Aquarium.o Milieu.o IDecorator.o Oreille.o Nageoire.o Carapace.o Camouflage.o Yeux.o Bestiole.o Decorator.o
-	g++ -Wall -std=c++11 -o test_oreille test_oreille.cpp Aquarium.o Milieu.o IDecorator.o Oreille.o Nageoire.o Carapace.o Camouflage.o Yeux.o Bestiole.o Decorator.o -I . -lX11 -lpthread
+test : test.cpp Aquarium.o Milieu.o IDecorator.o Oreille.o Nageoire.o Carapace.o Camouflage.o Yeux.o Bestiole.o Decorator.o
+	g++ -Wall -std=c++11 -o test test.cpp Aquarium.o Milieu.o IDecorator.o Oreille.o Nageoire.o Carapace.o Camouflage.o Yeux.o Bestiole.o Decorator.o  -I . -lX11 -lpthread
 
 Aquarium.o : Aquarium.h Aquarium.cpp
 	g++ -Wall -std=c++11  -c Aquarium.cpp -I .
@@ -37,5 +37,5 @@ IDecorator.o : IDecorator.h IDecorator.cpp Milieu.o
 	g++ -Wall -std=c++11 -c IDecorator.cpp -I .
 
 clean:
-	rm -rf *.o main
+	rm -rf *.o main test
 

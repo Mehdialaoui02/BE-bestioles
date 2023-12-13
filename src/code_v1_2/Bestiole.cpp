@@ -19,7 +19,8 @@ Bestiole::Bestiole( void )
 
    identite = ++next;  
 
-   x = y = 0;
+   x = 0;
+   y = 0;
    detection = 0;
    camouflage = 0;
    cumulX = cumulY = 0.;
@@ -67,10 +68,22 @@ Bestiole::~Bestiole( void )
 
 void Bestiole::initCoords( int xLim, int yLim )
 {
-
    x = rand() % xLim;
    y = rand() % yLim;
+}
 
+/*Prend en entrée un angle et retourne sa valeur dans l'intervalle [0 ; 2pi]*/
+double Bestiole::orientation_intervalle(double angle) {
+   double res = angle;
+   while (res>2 * M_PI || res<0) {
+      if (res>2 * M_PI) {
+         res = res - 2*M_PI;
+      }
+      else {
+         res = res + 2*M_PI;
+      }
+   }
+   return res;
 }
 
 /*Méthode modifiée par la feature Nageoires et Carapaces*/
@@ -90,7 +103,7 @@ void Bestiole::bouge( int xLim, int yLim )
    ny = y + dy + cy;
 
    if ( (nx < 0) || (nx > xLim - 1) ) {
-      orientation = M_PI - orientation;
+      orientation = orientation_intervalle(M_PI - orientation);
       cumulX = 0.;
    }
    else {
@@ -99,7 +112,7 @@ void Bestiole::bouge( int xLim, int yLim )
    }
 
    if ( (ny < 0) || (ny > yLim - 1) ) {
-      orientation = -orientation;
+      orientation = orientation_intervalle(-orientation);
       cumulY = 0.;
    }
    else {
@@ -111,9 +124,7 @@ void Bestiole::bouge( int xLim, int yLim )
 
 void Bestiole::action( Milieu & monMilieu)
 {  
-
    bouge( monMilieu.getWidth(), monMilieu.getHeight() );
-
 }
 
 

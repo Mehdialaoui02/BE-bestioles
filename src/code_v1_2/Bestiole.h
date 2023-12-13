@@ -49,6 +49,7 @@ public :                                           // Forme canonique :
    bool detecter(IDecorator* bestiole);
    void initCoords( int xLim, int yLim );
    
+   double orientation_intervalle(double angle);
    int getX(){return x;};
    int getY(){return y;};
    double getOrientation(){return orientation;};

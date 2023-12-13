@@ -16,7 +16,7 @@ class Nageoire : public Decorator
 
     private :
     static const long MAX_RAND = 1000000L;
-    static const int MAX_VIT = 100;
+    static const int MAX_VIT = 10;
     static const int MIN_VIT = 1;
 
     private :

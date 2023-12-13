@@ -6,7 +6,7 @@
 #include <cmath>
 
 Camouflage::Camouflage(IDecorator* b): Decorator(b) {
-    camouflage = MIN_CAMOUFLAGE + (MAX_CAMOUFLAGE - MIN_CAMOUFLAGE) * (random() % MAX_RAND) / MAX_RAND;
+    camouflage = MIN_CAMOUFLAGE + (MAX_CAMOUFLAGE - MIN_CAMOUFLAGE) * (double(random() % MAX_RAND)) / MAX_RAND;
     this->bestiole->setCamouflage(camouflage);
 }
 

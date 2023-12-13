@@ -6,7 +6,8 @@
 #include <cmath>
 
 Oreille::Oreille(IDecorator* b): Decorator(b) {
-    rayon = MIN_DIST + (MAX_DIST - MIN_DIST) * (random() % MAX_RAND) / MAX_RAND;
+    rayon = MIN_DIST + (MAX_DIST - MIN_DIST) * (double(random() % MAX_RAND)) / MAX_RAND;
+    std::cout<<"rayon d'ouie :"<<rayon<<endl;
 }
 
 Oreille::~Oreille(){
@@ -23,7 +24,8 @@ bool Oreille::jeTEntends(IDecorator* b){
     dist = this->bestiole->dist(b);
 
     this->rayon = 50;
-    if (dist <= rayon) {       
+    if (dist <= rayon) {
+        std::cout<<"entendu avec les oreilles"<<endl;
         return (this->bestiole->detecter(b));
     }
     return false;
